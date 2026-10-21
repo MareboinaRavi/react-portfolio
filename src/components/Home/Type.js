@@ -1,24 +1,6 @@
 import React from "react";
 import Typewriter from "typewriter-effect";
-
 function Type() {
-  return (
-    <Typewriter
-      options={{
-        strings: [
-          "Front End Developer",
-          "Back End Developer",
-          "MERN Stack Developer",
-          "Mobile Application Developer",
-          "Open Source Contributor",
-          "Web Developer",
-        ],
-        autoStart: true,
-        loop: true,
-        deleteSpeed: 50,
-      }}
-    />
-  );
+  return <Typewriter options={{ strings: ["Senior Full Stack Developer", "React.js & TypeScript", "Node.js & Express.js", "Java Spring Boot", "Micro-Frontend Developer"], autoStart: true, loop: true, deleteSpeed: 50 }} />;
 }
-
 export default Type;

@@ -1,33 +1,9 @@
 import React from "react";
-import { Col, Row } from "react-bootstrap";
-import {
-  SiVisualstudiocode,
-  SiPostman,
-  SiSlack,
-  SiVercel,
-  SiMacos,
-} from "react-icons/si";
-
+import { Row, Col } from "react-bootstrap";
+const tools = ["Git", "GitHub", "CI/CD", "ESLint", "Webpack", "Vite", "Jira", "Agile", "Jest", "React Testing Library"];
 function Toolstack() {
-  return (
-    <Row style={{ justifyContent: "center", paddingBottom: "50px" }}>
-      <Col xs={4} md={2} className="tech-icons">
-        <SiMacos />
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <SiVisualstudiocode />
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <SiPostman />
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <SiSlack />
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <SiVercel />
-      </Col>
-    </Row>
-  );
+  return <Row style={{ justifyContent: "center", paddingBottom: "50px" }}>
+    {tools.map(tool => <Col key={tool} xs={6} md={3} className="tech-icons" style={{ fontSize: "1.1rem", padding: "18px 8px" }}>{tool}</Col>)}
+  </Row>;
 }
-
 export default Toolstack;
