@@ -1,122 +1,32 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
-import logo from "../Assets/rrr.png";
-import Button from "react-bootstrap/Button";
-import { Link } from "react-router-dom";
-import { CgGitFork } from "react-icons/cg";
-import { FaHandshake } from "react-icons/fa";
-import {
-  AiFillStar,
-  AiOutlineHome,
-  AiOutlineFundProjectionScreen,
-  AiOutlineUser,
-} from "react-icons/ai";
+import { Link, NavLink } from "react-router-dom";
+import { FiMoon, FiSun, FiExternalLink } from "react-icons/fi";
+import { profile } from "../data/portfolio";
 
-import { CgFileDocument } from "react-icons/cg";
-
-function NavBar() {
-  const [expand, updateExpanded] = useState(false);
-  const [navColour, updateNavbar] = useState(false);
-
-  function scrollHandler() {
-    if (window.scrollY >= 20) {
-      updateNavbar(true);
-    } else {
-      updateNavbar(false);
-    }
-  }
-
-  window.addEventListener("scroll", scrollHandler);
-
-  return (
-    <Navbar
-      expanded={expand}
-      fixed="top"
-      expand="md"
-      className={navColour ? "sticky" : "navbar"}
-    >
-      <Container>
-        <Navbar.Brand href="/" className="d-flex">
-          <img src={logo} className="img-fluid logo" alt="brand" />
-        </Navbar.Brand>
-        <Navbar.Toggle
-          aria-controls="responsive-navbar-nav"
-          onClick={() => {
-            updateExpanded(expand ? false : "expanded");
-          }}
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </Navbar.Toggle>
-        <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="ms-auto" defaultActiveKey="#home">
-            <Nav.Item>
-              <Nav.Link as={Link} to="/" onClick={() => updateExpanded(false)}>
-                <AiOutlineHome style={{ marginBottom: "2px" }} /> Home
-              </Nav.Link>
-            </Nav.Item>
-
-            <Nav.Item>
-              <Nav.Link
-                as={Link}
-                to="/about"
-                onClick={() => updateExpanded(false)}
-              >
-                <AiOutlineUser style={{ marginBottom: "2px" }} /> About
-              </Nav.Link>
-            </Nav.Item>
-
-            <Nav.Item>
-              <Nav.Link
-                as={Link}
-                to="/project"
-                onClick={() => updateExpanded(false)}
-              >
-                <AiOutlineFundProjectionScreen
-                  style={{ marginBottom: "2px" }}
-                />{" "}
-                Projects
-              </Nav.Link>
-            </Nav.Item>
-
-            <Nav.Item>
-              <Nav.Link
-                as={Link}
-                to="/resume"
-                onClick={() => updateExpanded(false)}
-              >
-                <CgFileDocument style={{ marginBottom: "2px" }} /> Resume
-              </Nav.Link>
-            </Nav.Item>
-
-            <Nav.Item>
-              <Nav.Link
-                href="https://www.linkedin.com/in/ravimareboina/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <FaHandshake style={{ marginBottom: "2px" }} /> Connect
-              </Nav.Link>
-            </Nav.Item>
-
-            <Nav.Item className="fork-btn">
-              <Button
-                href="https://github.com/MareboinaRavi"
-                target="_blank"
-                className="fork-btn-inner"
-              >
-                <CgGitFork style={{ fontSize: "1.2em" }} />{" "}
-                <AiFillStar style={{ fontSize: "1.1em" }} />
-              </Button>
-            </Nav.Item>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
-  );
+function NavBar({ theme, onToggleTheme }) {
+  const [expanded, setExpanded] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 16);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+  return <Navbar expanded={expanded} fixed="top" expand="md" className={scrolled ? "sticky" : "navbar"}>
+    <Container>
+      <Navbar.Brand as={Link} to="/" onClick={() => setExpanded(false)} className="brand-wordmark" aria-label="Ravi Mareboina home">RAVI<span>.</span>MAREBOINA</Navbar.Brand>
+      <Navbar.Toggle aria-controls="portfolio-navigation" aria-label="Toggle navigation" onClick={() => setExpanded(!expanded)}><span></span><span></span><span></span></Navbar.Toggle>
+      <Navbar.Collapse id="portfolio-navigation">
+        <Nav className="ms-auto" aria-label="Main navigation">
+          {[["/","Home"],["/about","About"],["/project","Work"],["/resume","Resume"]].map(([to,label]) => <Nav.Item key={to}><Nav.Link as={NavLink} end={to === "/"} to={to} onClick={() => setExpanded(false)}>{label}</Nav.Link></Nav.Item>)}
+          <Nav.Item><Nav.Link href={profile.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn <FiExternalLink size={12} aria-hidden="true" /></Nav.Link></Nav.Item>
+          <Nav.Item className="theme-nav-item"><button className="theme-toggle" type="button" onClick={onToggleTheme} aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`} title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`} aria-pressed={theme === "dark"}>{theme === "dark" ? <FiSun aria-hidden="true" /> : <FiMoon aria-hidden="true" />}<span>{theme === "dark" ? "Light" : "Dark"}</span></button></Nav.Item>
+        </Nav>
+      </Navbar.Collapse>
+    </Container>
+  </Navbar>;
 }
-
 export default NavBar;
