@@ -12,6 +12,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./style.css";
 import "./App.css";
 import "./theme.css";
+import "./project-enhancements.css";
 
 function getInitialTheme() {
   try {
