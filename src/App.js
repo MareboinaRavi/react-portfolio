@@ -14,6 +14,7 @@ import "./App.css";
 import "./theme.css";
 import "./project-enhancements.css";
 import "./glass-motion.css";
+import "./landing-page.css";
 
 function getInitialTheme() {
   try {
