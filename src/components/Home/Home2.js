@@ -11,14 +11,14 @@ function Home2() {
     <Container fluid className="home-about-section" id="about">
       <Container>
         <Row>
-          <Col md={8} className="home-about-description">
+          <Col md={8} className="home-about-description mb-2  ">
             <h1 style={{ fontSize: "2.6em" }}>LET ME <span className="purple">INTRODUCE</span> MYSELF</h1>
             <p className="home-about-body">{profile.summary}</p>
             <p className="home-about-body">I build workflow-driven banking platforms, healthcare tools, retail experiences and data products, with a focus on secure APIs, accessible interfaces and reliable delivery.</p>
           </Col>
           <Col md={4} className="myAvtar"><Tilt><img src={myImg} className="img-fluid" style={{ borderRadius: "50%" }} alt="Illustrated developer avatar" /></Tilt></Col>
-        </Row>
-        <Row><Col md={12} className="home-about-social">
+        </Row>  
+        <Row><Col md={12} className="home-about-social pb-4">
           <h1>FIND ME ON</h1><p>Based in {profile.location}. Feel free to <span className="purple">connect</span>.</p>
           <ul className="home-about-social-links">
             <li className="social-icons"><a href={profile.github} target="_blank" rel="noopener noreferrer" className="icon-colour home-social-icons" aria-label="GitHub"><AiFillGithub /></a></li>

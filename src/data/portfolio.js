@@ -1,12 +1,36 @@
+
+function getExperience(dateString) {
+  const cleanedDate = dateString.replace(/(\d+)(st|nd|rd|th)/i, "$1");
+  const startDate = new Date(cleanedDate);
+  const today = new Date();
+
+  let years = today.getFullYear() - startDate.getFullYear();
+  let months = today.getMonth() - startDate.getMonth();
+  let days = today.getDate() - startDate.getDate();
+
+  if (days < 0) {
+    months--;
+    days += new Date(today.getFullYear(), today.getMonth(), 0).getDate();
+  }
+
+  if (months < 0) {
+    years--;
+    months += 12;
+  }
+
+  return `${years} years ${months} months ${days} days`;
+}
+
 export const profile = {
   name: "Ravi Mareboina",
   title: "Senior Full Stack Developer",
   location: "Hyderabad, India",
-  phone: "+91 7702943670",
+  phone: "+91 9848011228",
   email: "mareboinaravi446@gmail.com",
   linkedin: "https://www.linkedin.com/in/ravimareboina/",
   github: "https://github.com/MareboinaRavi",
-  summary: "Senior Full Stack Developer with 5 years 6 months+ of experience building scalable, secure, high-performance web applications across banking, healthcare, retail, and data platforms. Specializing in React.js, TypeScript, Node.js/Express.js, Java Spring Boot, REST APIs, micro-frontends, authentication, and testing."
+  //make experience dynamic future
+  summary: `Senior Full Stack Developer with ${getExperience("08th April 2021")} of experience building scalable, secure, high-performance web applications across banking, healthcare, retail, and data platforms. Specializing in React.js, TypeScript, Node.js/Express.js, Java Spring Boot, REST APIs, micro-frontends, authentication, and testing.`
 };
 
 export const skillGroups = [
@@ -27,3 +51,5 @@ export const experiences = [
 ];
 
 export const certifications = ["Complete Node.js Course with Express and MySQL — Udemy", "Crash Course on Python — Google (Coursera)", "Generative AI Fundamentals — Databricks"];
+
+export const additionalInfo = ["YouTube content creator (5.85K subscribers), teaching Python concepts using Telugu song lyrics", "CSR volunteer in food distribution and tree planting", "Company blog contributor"];

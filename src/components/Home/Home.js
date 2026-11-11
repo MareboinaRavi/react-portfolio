@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import { FiArrowDown, FiArrowUpRight, FiMapPin } from "react-icons/fi";
 import homeLogo from "../../Assets/home-main.svg";
 import Home2 from "./Home2";
@@ -15,10 +16,10 @@ function Home() {
             <p className="premium-kicker"><span className="status-dot" /> SOFTWARE ENGINEER <span className="kicker-divider">/</span> {profile.location.toUpperCase()}</p>
             <h1 className="premium-title">Thoughtful code.<br /><span>Remarkable</span> experiences.</h1>
             <p className="premium-description">I’m {profile.name}, a {profile.title.toLowerCase()} creating polished, reliable digital products for the real world.</p>
-            <div className="premium-specialty"><span className="specialty-label">CURRENTLY BUILDING</span><Type /></div>
+            <div className="premium-specialty"><Type /></div>
             <div className="premium-actions">
-              <a className="premium-button primary" href="/project">Explore my work <FiArrowUpRight aria-hidden="true" /></a>
-              <a className="premium-button quiet" href={`mailto:${profile.email}`}>Let’s talk <FiArrowUpRight aria-hidden="true" /></a>
+              <Link className="premium-button primary" to="/project">Explore my work <FiArrowUpRight aria-hidden="true" /></Link>
+              {/* <a className="premium-button quiet" href={`mailto:${profile.email}`}>Let’s talk <FiArrowUpRight aria-hidden="true" /></a> */}
             </div>
             <a className="premium-scroll" href="#about"><span className="scroll-icon"><FiArrowDown aria-hidden="true" /></span> SCROLL TO EXPLORE</a>
           </Col>
