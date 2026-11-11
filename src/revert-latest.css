@@ -1,0 +1,91 @@
+/* Restore the landing/about section styling from before the latest UI commit. */
+.home-about-section .home-about-description {
+  padding: 100px 15px 20px !important;
+  text-align: center;
+}
+.home-about-section .home-about-description h1 {
+  margin: 0.67em 0;
+}
+.home-about-section .home-about-body {
+  padding-top: 50px;
+  margin: 1em 0;
+}
+.home-about-section > .container > .row:first-child {
+  align-items: initial;
+  padding: 10px !important;
+}
+.home-about-section .myAvtar {
+  display: block;
+  padding-top: 9em !important;
+  padding-right: 15px !important;
+  padding-bottom: 0 !important;
+  padding-left: 15px !important;
+}
+.home-about-section .myAvtar > div {
+  width: auto;
+}
+.home-about-section .myAvtar img {
+  width: auto;
+  margin: 0;
+}
+.home-about-social-links {
+  display: inline-block !important;
+  position: relative !important;
+  padding: 15px 0 0 !important;
+}
+.home-about-social-links .social-icons {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.home-about-social-links .home-social-icons,
+.home-about-social-links .home-social-icons:hover,
+.home-about-social-links .home-social-icons:focus-visible {
+  position: relative !important;
+  display: inline-block !important;
+  width: 40px !important;
+  height: 40px !important;
+  text-align: center !important;
+  font-size: 1.2em !important;
+  line-height: 2em !important;
+  background: rgba(255, 255, 255, 0.972) !important;
+  border: 0 !important;
+  border-radius: 50% !important;
+  box-shadow: none !important;
+  color: #700c86 !important;
+  text-shadow: none !important;
+  transform: none !important;
+  transition: 0.5s !important;
+}
+.home-about-social-links .home-social-icons::before {
+  display: block !important;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #68187a;
+  transition: 0.5s;
+  transform: scale(0.9);
+  z-index: -1;
+}
+.home-about-social-links .home-social-icons:hover::before {
+  transform: scale(1.1) !important;
+  box-shadow: 0 0 15px #801f95 !important;
+}
+.home-about-social-links .home-social-icons:hover {
+  color: #87209e !important;
+  box-shadow: 0 0 5px #87209e !important;
+  text-shadow: 0 0 2px #87209e !important;
+}
+@media (max-width: 767px) {
+  .home-about-section .home-about-description {
+    padding-top: 100px !important;
+    padding-bottom: 20px !important;
+  }
+  .home-about-section .myAvtar {
+    padding-top: 2em !important;
+    padding-bottom: 2em !important;
+  }
+}

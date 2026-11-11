@@ -15,6 +15,7 @@ import "./theme.css";
 import "./project-enhancements.css";
 import "./glass-motion.css";
 import "./landing-page.css";
+import "./revert-latest.css";
 
 function getInitialTheme() {
   try {
